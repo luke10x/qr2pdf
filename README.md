@@ -8,4 +8,5 @@ qr2pdf N
 Where N is QR codes per page
 
 Install build deps:
-sudo apt install librsvg2-dev libgdk-pixbuf2.0-dev
+sudo apt install librsvg2-dev libgdk-pixbuf2.0-dev libqrencode-dev
+
