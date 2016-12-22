@@ -27,9 +27,12 @@ qr2pdf: $(objects)
 		-L/usr/lib/x86_64-linux-gnu/libqrencode.so -lqrencode \
 		-o $@
 
-.PHONY: clean
+.PHONY: clean indent
 
 clean:
 	@rm -f obj/*.o
 	@rm -f qr2pdf
 	@rm -f output.pdf
+
+indent:
+	indent -kr -ts4 -nut -l80 src/*.c
