@@ -26,17 +26,47 @@ q2p_doc_t *q2p_doc_create()
     self->surface =
         cairo_pdf_surface_create("output.pdf", A4_WIDTH_PT, A4_HEIGHT_PT);
     self->cr = cairo_create(self->surface);
+
+    self->margin = 6;
+    self->gap = 2;
+    self->size = 18;
+    self->lastx = -1;
+    self->lasty = -1;
+
+    return self;
 }
 
 int *q2p_doc_write(q2p_doc_t * self, char *text)
 {
-    cairo_t *cr = self->cr;
-    draw_qr(cr, "first", 0, 10, 70);
-    /*draw_qr(cr, "hello", 70, 10, 70); */
-    draw_qr(cr, "another message", 140, 10, 70);
-    cairo_show_page(cr);
+    int x, y, needs_gap;
 
-    draw_qr(cr, " message", 140, 90, 70);
+    if (self->lastx == -1 && self->lasty == -1) {
+      new_page:
+        x = self->margin;
+        y = self->margin;
+    } else {
+        x = self->lastx + self->size;
+        x = x + self->gap;
+
+        y = self->lasty;
+
+        if (x + self->size + self->margin > A4_WIDTH_MM) {
+            x = self->margin;
+            y = self->lasty + self->gap + self->size;
+        }
+
+        if (y + self->size + self->margin > A4_HEIGHT_MM) {
+            x = 0;
+            y = 0;
+            cairo_show_page(self->cr);
+            goto new_page;
+        }
+    }
+
+    self->lastx = x;
+    self->lasty = y;
+
+    draw_qr(self->cr, text, x, y, self->size);
 }
 
 int *q2p_doc_close(q2p_doc_t * self)

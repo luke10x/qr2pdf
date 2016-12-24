@@ -12,11 +12,11 @@
 typedef struct {
     cairo_surface_t *surface;
     cairo_t *cr;
-    int width;
-    int height;
     int margin;
     int gap;
     int size;
+    int lastx;
+    int lasty;
 } q2p_doc_t;
 
 q2p_doc_t *q2p_doc_create();

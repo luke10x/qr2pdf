@@ -11,7 +11,10 @@ int main(int argc, char *argv[])
     printf("%s\n", path);
 
     q2p_doc_t *doc = q2p_doc_create();
-    q2p_doc_write(doc, "kolkas nieko");
+
+    for (int i = 0; i < 118; i++)
+        q2p_doc_write(doc, "hello");
+
     q2p_doc_close(doc);
 
     return 0;
