@@ -10,19 +10,19 @@
 #define A4_WIDTH_PT  595
 
 typedef struct {
-   cairo_surface_t *surface;
-   cairo_t *cr;
-   int width; 
-   int height; 
-   int margin; 
-   int gap; 
-   int size; 
+    cairo_surface_t *surface;
+    cairo_t *cr;
+    int width;
+    int height;
+    int margin;
+    int gap;
+    int size;
 } q2p_doc_t;
 
 q2p_doc_t *q2p_doc_create();
 
-int *q2p_doc_write(q2p_doc_t *self, char *text);
+int *q2p_doc_write(q2p_doc_t * self, char *text);
 
-int *q2p_doc_close(q2p_doc_t *self);
+int *q2p_doc_close(q2p_doc_t * self);
 
 #endif

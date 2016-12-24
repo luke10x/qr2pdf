@@ -36,3 +36,4 @@ clean:
 
 indent:
 	indent -kr -ts4 -nut -l80 src/*.c src/*.h
+	@rm -f src/*~

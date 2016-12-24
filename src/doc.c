@@ -23,22 +23,23 @@ q2p_doc_t *q2p_doc_create()
     q2p_doc_t *self;
     self = malloc(sizeof(q2p_doc_t));
 
-    self->surface = cairo_pdf_surface_create("output.pdf", A4_WIDTH_PT, A4_HEIGHT_PT);
+    self->surface =
+        cairo_pdf_surface_create("output.pdf", A4_WIDTH_PT, A4_HEIGHT_PT);
     self->cr = cairo_create(self->surface);
 }
 
-int *q2p_doc_write(q2p_doc_t *self, char *text)
+int *q2p_doc_write(q2p_doc_t * self, char *text)
 {
     cairo_t *cr = self->cr;
     draw_qr(cr, "first", 0, 10, 70);
-    /*draw_qr(cr, "hello", 70, 10, 70);*/
+    /*draw_qr(cr, "hello", 70, 10, 70); */
     draw_qr(cr, "another message", 140, 10, 70);
     cairo_show_page(cr);
 
     draw_qr(cr, " message", 140, 90, 70);
 }
 
-int *q2p_doc_close(q2p_doc_t *self)
+int *q2p_doc_close(q2p_doc_t * self)
 {
     cairo_t *cr = self->cr;
     cairo_surface_t *surface = self->surface;
