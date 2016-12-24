@@ -2,7 +2,6 @@
 #ifndef rand_string_h__
 
 #define rand_string_h__
-#include <stdlib.h>
 
 char *create_output_path(char *dir);
 
