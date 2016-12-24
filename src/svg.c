@@ -88,7 +88,7 @@ cairo_surface_t *create_qr_surface(char *text, int size)
     char *svg = qrcode2svg(qrcode, size);
 
     /* For debugging */
-    printf("%s", svg);
+    /*printf("%s", svg); */
 
     return cairo_image_surface_create_from_svg(svg);
 }

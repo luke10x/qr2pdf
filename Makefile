@@ -1,7 +1,7 @@
 .DEFAULT_GOAL=qr2pdf
 vpath %.c ./src
 
-src = qr2pdf.c svg.c
+src = svg.c filename.c qr2pdf.c
 #test_src = test.c qr2pdf.c
 
 objects = $(patsubst %.c,obj/%.o,$(src))
@@ -16,7 +16,6 @@ obj/%.o : %.c
 	@echo $<
 	$(CC) -c $< `pkg-config --cflags --libs cairo` \
 		`pkg-config --cflags --libs librsvg-2.0` \
-		`pkg-config --cflags --libs qrencode` \
 		-g \
 		-o $@
 
@@ -33,6 +32,5 @@ clean:
 	@rm -f obj/*.o
 	@rm -f qr2pdf
 	@rm -f output.pdf
-
 indent:
 	indent -kr -ts4 -nut -l80 src/*.c
