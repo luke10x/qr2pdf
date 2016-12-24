@@ -32,5 +32,7 @@ clean:
 	@rm -f obj/*.o
 	@rm -f qr2pdf
 	@rm -f output.pdf
+	@rm -f src/*~
+
 indent:
-	indent -kr -ts4 -nut -l80 src/*.c
+	indent -kr -ts4 -nut -l80 src/*.c src/*.h
