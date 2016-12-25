@@ -38,7 +38,7 @@ q2p_doc_t *q2p_doc_create()
 
 int *q2p_doc_write(q2p_doc_t * self, char *text)
 {
-    int x, y, needs_gap;
+    int x, y;
 
     if (self->lastx == -1 && self->lasty == -1) {
       new_page:
