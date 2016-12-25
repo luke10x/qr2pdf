@@ -19,7 +19,7 @@ typedef struct {
     int lasty;
 } q2p_doc_t;
 
-q2p_doc_t *q2p_doc_create();
+q2p_doc_t *q2p_doc_create(int size, int margin, int gap);
 
 int *q2p_doc_write(q2p_doc_t * self, char *text);
 

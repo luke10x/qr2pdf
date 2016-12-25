@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "args.h"
 #include "filename.h"
 #include "doc.h"
 
@@ -13,7 +14,9 @@ int main(int argc, char *argv[])
     char *path = create_output_path("output");
     printf("%s\n", path);
 
-    q2p_doc_t *doc = q2p_doc_create();
+    args_t args = parse_opts(argc, argv);
+
+    q2p_doc_t *doc = q2p_doc_create(args.size, args.margin, args.gap);
 
     char *line = malloc(READ_BLOCK_SIZE);
     FILE *stream = fdopen(0, "r");

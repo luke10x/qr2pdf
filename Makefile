@@ -1,7 +1,7 @@
 .DEFAULT_GOAL=qr2pdf
 vpath %.c ./src
 
-src = svg.c filename.c doc.c qr2pdf.c
+src = args.c svg.c filename.c doc.c qr2pdf.c
 #test_src = test.c qr2pdf.c
 
 objects = $(patsubst %.c,obj/%.o,$(src))

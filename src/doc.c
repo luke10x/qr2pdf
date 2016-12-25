@@ -18,7 +18,7 @@ int draw_qr(cairo_t * cr, char *text, float x, float y, int size)
     cairo_surface_destroy(surf);
 }
 
-q2p_doc_t *q2p_doc_create()
+q2p_doc_t *q2p_doc_create(int size, int margin, int gap)
 {
     q2p_doc_t *self;
     self = malloc(sizeof(q2p_doc_t));
@@ -27,9 +27,9 @@ q2p_doc_t *q2p_doc_create()
         cairo_pdf_surface_create("output.pdf", A4_WIDTH_PT, A4_HEIGHT_PT);
     self->cr = cairo_create(self->surface);
 
-    self->margin = 6;
-    self->gap = 2;
-    self->size = 18;
+    self->margin = margin;
+    self->gap = gap;
+    self->size = size;
     self->lastx = -1;
     self->lasty = -1;
 
